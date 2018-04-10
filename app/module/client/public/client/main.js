@@ -1,0 +1,98 @@
+var _App;
+(function($) {
+    "use strict";
+
+    if (!$.app) {
+        $.app = {};
+    }
+
+    var util = {
+        script: function(file, cd) {
+            var script = document.createElement('script');
+            script.src = file;
+            script.onload = function() {
+                setTimeout(function() {
+                    cd();
+                }, 1000 / 30);
+            };
+            document.head.appendChild(script);
+        },
+        loader: function() {
+            var e = document.getElementById('loader');
+            e.style.opacity = 0;
+            e.style.pointerEvents = 'none';
+            setTimeout(function() {
+                e.parentElement.removeChild(e);
+            }, 5000);
+        },
+        request: function(url, method) {
+            return {
+                url: url,
+                method: method || 'GET',
+                headers: {Authorization: ($.app.login || {}).session}
+            };
+        },
+        style: function(name, type) {
+            var deus = new $._deus(name), r = deus.pub();
+            $.util.style(type, r);
+        },
+        load: function() {
+            var self = this;
+            return $.ajax(this.request('/client/json')).then(function(msg) {
+                var wait = [];
+                for (var i in msg) {
+                    wait.push($.ajax(self.request(msg[i])).then(function(data) {
+                        var script = document.createElement('script');
+                        script.innerHTML = data;
+                        document.head.appendChild(script);
+                        return true;
+                    }));
+                }
+                return ($.all(wait));
+            });
+        }
+    };
+
+    var main = function() {
+        var deus = ['part', 'shared'];
+        for (var i in deus) {
+            util.style(deus[i], 'base');
+        }
+
+
+        if(!localStorage.getItem('user')) {
+            $.user = 'nano_' + $.util.random(32);
+            localStorage.setItem('user', $.user);
+        } else {
+            $.user = localStorage.getItem('user');
+        }
+
+        util.load().then(function () {
+            $.route.add({
+                path: '/',
+                action: {
+                    controller: 'calendar',
+                    method: 'index'
+                }
+            });
+
+            window.addEventListener('hashchange', function(res) {
+                $.route.run(res.newURL);
+            });
+
+            setTimeout(function() {
+                util.loader();
+                $.route.run(window.location.href);
+            }, 200);
+        })
+    };
+
+    window.addEventListener('load', function() {
+        util.script('/lib.raw', function() {
+            util.script('/react.raw', function() {
+                main();
+            });
+        });
+    });
+
+})(_App || (_App = {}));
