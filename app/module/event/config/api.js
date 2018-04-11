@@ -15,13 +15,13 @@ module.exports = function() {
 		},
 		{
 			method: ['post'],
-			path: '/event/:shard/free',
+			path: '/event/:shard',
 			param: {
 				shard: '[a-z0-9]*'
 			},
 			action: {
 				controller: 'event',
-				method: 'free'
+				method: 'create'
 			}
 		},
 		{
@@ -32,7 +32,7 @@ module.exports = function() {
 			},
 			action: {
 				controller: 'event',
-				method: 'reserve'
+				method: 'update'
 			}
 		},
 		{
@@ -43,8 +43,8 @@ module.exports = function() {
 			},
 			action: {
 				controller: 'event',
-				method: 'reserve'
+				method: 'remove'
 			}
-		}
+		},
 	]);
 };

@@ -40,10 +40,8 @@ module.exports = function($) {
             create: function(data) {
                 var d = model.create().set(data).get();
                 d._id = $.key.long();
-                return ($.all([
-                    this.db.insert('event', d),
-                    this.db.insert('shard', {_id: d.shard, user: d.user})
-                ]));
+                this.db.insert('shard', {_id: d.shard, user: d.user});
+                return this.db.insert('event', d);
             },
 
             /**

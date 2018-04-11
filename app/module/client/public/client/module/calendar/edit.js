@@ -9,23 +9,9 @@ var _App;
     $.util.style('base', r);
 
 
-    r.create(info.page + '.form', {
+    r.create(info.page + '.edit', {
         getInitialState: function() {
             return ({});
-        },
-
-        part: function(key, data, type) {
-            var self = this;
-            return r('div').c(
-                r('span').c(key),
-                r('part.input').set({value: data[key] || ((type == 'date')? '' : ''), type: type}).on('change', function(res) {
-                    data[key] = res;
-                    console.log(res);
-                    if (self.props.onChange) {
-                        self.props.onChange(data);
-                    }
-                }).c()
-            );
         },
 
         render: function() {
@@ -35,10 +21,7 @@ var _App;
             }
             return r('part.modal').set({size: 'full', show: true}).c(
                 r('div').style({padding: '20px'}).c(
-                    this.part('name', data),
-                    this.part('description', data),
-                    this.part('start', data, 'date'),
-                    this.part('end', data, 'date'),
+                    this.props.id,
                     r('div').class('button').on('click', function(res) {
                         if (self.props.onClose) {
                             self.props.onClose(true);

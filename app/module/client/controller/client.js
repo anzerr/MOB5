@@ -11,7 +11,7 @@ module.exports = function($) {
 
 		var obj = function() {
 			this._priority = {
-				'/route.js': 7
+				'/util/util.js': 7
 			};
 		};
 		obj.prototype = $.extends('!controller', {

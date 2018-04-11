@@ -59,15 +59,7 @@ var _App;
             util.style(deus[i], 'base');
         }
 
-
-        if(!localStorage.getItem('user')) {
-            $.user = 'nano_' + $.util.random(32);
-            localStorage.setItem('user', $.user);
-        } else {
-            $.user = localStorage.getItem('user');
-        }
-
-        util.load().then(function () {
+        util.load().then(function() {
             $.route.add({
                 path: '/',
                 action: {

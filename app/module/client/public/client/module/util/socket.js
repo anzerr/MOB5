@@ -7,7 +7,12 @@ var _App;
     };
     var deus = new $._deus(info.page), r = deus.pub();
     $.util.style('base', r);
-    var user = $.user;
+    if (!localStorage.getItem('user')) {
+        var user = 'nano_' + $.util.random(32);
+        localStorage.setItem('user', user);
+    } else {
+        user = localStorage.getItem('user');
+    }
 
     r.create('socket', {
         getInitialState: function() {

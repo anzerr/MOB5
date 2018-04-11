@@ -68,8 +68,10 @@ var _App;
                     self.setState({add: res})
                 }).c(),
                 r('div').on('click', function(res) {
-                    self.add(self.state.add);
-                    self.setState({add: ''});
+                    if (self.state.add != '') {
+                        self.add(self.state.add);
+                        self.setState({add: ''});
+                    }
                 }).c('add'),
             );
         }
