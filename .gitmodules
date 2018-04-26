@@ -1,3 +1,9 @@
 [submodule "Singularity"]
 	path = Singularity
 	url = https://github.com/Product-Live/Singularity.git
+[submodule "client/react"]
+	path = client/react
+	url = https://github.com/anzerr/Module_react.git
+[submodule "client/libary"]
+	path = client/libary
+	url = https://github.com/anzerr/Module_Libary.git

@@ -54,19 +54,27 @@ var _App;
     };
 
     var main = function() {
-        var deus = ['part', 'shared'];
+        var deus = ['part', 'shared', 'service'];
         for (var i in deus) {
             util.style(deus[i], 'base');
         }
 
-        util.load().then(function() {
+        $.require([
+            '/semantic/overload.css',
+            '/semantic/semantic.min.css',
+            '/semantic/semantic.min.js'
+        ]).then(function() {
+            return util.load();
+        }).then(function() {
             $.route.add({
                 path: '/',
                 action: {
-                    controller: 'calendar',
+                    controller: 'service',
                     method: 'index'
                 }
             });
+
+            $.url = 'http://localhost:580';
 
             window.addEventListener('hashchange', function(res) {
                 $.route.run(res.newURL);

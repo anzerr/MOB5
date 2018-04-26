@@ -1,0 +1,6 @@
+[submodule "react"]
+	path = react
+	url = https://github.com/anzerr/Module_react.git
+[submodule "libary"]
+	path = libary
+	url = https://github.com/anzerr/Module_Libary.git

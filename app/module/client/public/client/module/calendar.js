@@ -8,7 +8,9 @@ var _App;
     var deus = new $._deus(info.page), r = deus.pub();
     $.util.style('base', r);
 
-    var calendar = r.create({
+    var block = {float: 'left', width: 'calc(50% - 40px)', padding: '5px', background: 'black', color: 'white', margin: '0px 10px', borderRadius: '10px'};
+
+    r.create('service.calendar', {
         getInitialState: function() {
             return ({offset: 0});
         },
@@ -43,27 +45,34 @@ var _App;
 
         render: function() {
             var self = this, range = this.range(true);
-            return r('div').c(
-                r('div').c('offset:' +  self.state.offset),
-                r('div').c('date:' + range[0].toString() + ' to ' + range[1].toString(), ' month ' + range[2]),
-                r('div').on('click', function() {
-                    self.setState({offset: self.state.offset - 1});
-                }).c('back'),
-                r('div').on('click', function() {
-                    self.setState({offset: self.state.offset + 1});
-                }).c('forward'),
-                r('calendar.shard').set({selected: this.state.shard}).on('change', function(res) {
-                    self.setState({shard: res});
-                }).c(),
+            return r('div').style({overflow: 'auto'}, 'full').c(
+                //r('div').c('offset:' +  self.state.offset),
+                r('div').style({overflow: 'auto', textAlign: 'center', margin: '10px 0px'}).c(
+                    r('div').style(block).c(range[0].toUTCString()),
+                    r('div').style({float: 'left', width: '40px'}).c('to'),
+                    r('div').style(block).c(range[1].toUTCString())
+                ),
+                r('div').style({overflow: 'auto', textAlign: 'center', margin: '10px 0px'}).c(
+                    r('div').style({float: 'left', width: '50%'}).c(
+                        r('div').class('ui button small').on('click', function() {
+                            self.setState({offset: self.state.offset - 1});
+                        }).c(r('i').class('angle left icon').style({padding: '0px', margin: '0px'}).c())
+                    ),
+                    r('div').style({float: 'left', width: '50%'}).c(
+                        r('div').class('ui button small').on('click', function() {
+                            self.setState({offset: self.state.offset + 1});
+                        }).c(r('i').class('angle right icon').style({padding: '0px', margin: '0px'}).c())
+                    )
+                ),
+
+                r('div').style({overflow: 'auto', textAlign: 'center', margin: '10px 0px'}).c(
+                    r('calendar.shard').set({selected: this.state.shard}).on('change', function(res) {
+                        self.setState({shard: res});
+                    }, true).c()
+                ),
+
                 (this.state.shard)? r('calendar.grid').set({start: range[0], end: range[1], shard: this.state.shard + 'a' + range[2]}).c() : null
             );
-        }
-    });
-
-    $.page.add('calendar', {
-        index: function() {
-            ReactDOM.render(r(calendar).c(), document.getElementById('container'));
-            return (true);
         }
     });
 })(_App || (_App = {}));

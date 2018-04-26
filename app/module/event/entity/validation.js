@@ -41,6 +41,7 @@ module.exports = function($) {
             },
 
             remove: function(data) {
+                let b = data.body;
                 if (m.s(b.shard) && m.s(data.body.id)) {
                     return (true);
                 }
@@ -48,6 +49,7 @@ module.exports = function($) {
             },
 
             update: function(data) {
+                let b = data.body;
                 if (m.s(b.shard) && m.s(data.body.id) && $.is.object(data.body.event)) {
                     return (true);
                 }

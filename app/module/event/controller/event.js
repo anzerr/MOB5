@@ -56,7 +56,7 @@ module.exports = function($) {
             }),
 
             update: $.midware([validation, 'update'], function(data) {
-                return event.update(data.body.id, data.body.event).then(function(res) {
+                return event.update(data.body.id, data.body.event).then((res) => {
                     this.send('update', {in: data.body, out: res}, data.body.shard || 'none');
                     return this.res().status(200).data(res);
                 }, (res) => {
