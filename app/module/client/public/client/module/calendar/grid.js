@@ -40,7 +40,7 @@ var _App;
             fontWeight: 'bold',
         },
         event: {
-            margin: '1px 30px',
+            margin: '1px 1px',
             textAlign: 'center',
             background: 'red',
             borderRadius: '5px',
@@ -231,9 +231,9 @@ var _App;
 
             var self = this, load = this.state.load;
             return r('div').style({pointerEvent: (load)? 'none' : 'all'}).c(
-                r('socket').set({shard: this.props.shard}).on('change', function(res) {
+                /*r('socket').set({shard: this.props.shard}).on('change', function(res) {
                     console.log(res);
-                }).c(),
+                }).c(),*/
                 r('div').style({padding: (load)? '0px' : '20px', opacity: (load)? '0' : '1'}, 'anim').c(
                     //r('div').c(days + ' ' + this.props.shard),
                     r('div').style({overflow: 'auto', position: 'relative'}).c(

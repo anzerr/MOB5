@@ -31,7 +31,7 @@ var _App;
             return (r('div').style({width: '100%', height: '100%', position: 'relative'}).c(
                 r('part.loader').set({show: this.state.load}).c(),
                 r('part.center').set({height: 100}).c(
-                    r('form').class('ui form').style({width: '400px', height: '210px', padding: '10px', background: '#2b2b2b', borderRadius: '5px'}).c(
+                    r('form').class('ui form').style({width: '300px', height: '210px', padding: '10px', background: '#2b2b2b', borderRadius: '5px'}).c(
                         r('div').class('field').c(
                             r('label').style({color: 'white'}).c('User'),
                             r('div').class('field').c(

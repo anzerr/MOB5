@@ -79,7 +79,7 @@ var _App;
                 }
                 return type;
             }).c(
-                r('div').style({height: '100%', padding: '20px'}).c(
+                r('div').style({height: '100%', padding: '5px', overflow: 'auto'}).c(
                     r('part.form').set({value: self.props.data || {}, form: form}).on('change', function(e) {
                         if (self.props.onChange) {
                             self.props.onChange(e);

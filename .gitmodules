@@ -7,3 +7,9 @@
 [submodule "client/libary"]
 	path = client/libary
 	url = https://github.com/anzerr/Module_Libary.git
+[submodule "cordova/module/libary"]
+	path = cordova/module/libary
+	url = https://github.com/anzerr/Module_Libary.git
+[submodule "cordova/module/react"]
+	path = cordova/module/react
+	url = https://github.com/anzerr/Module_react.git

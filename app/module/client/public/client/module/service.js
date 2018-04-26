@@ -18,7 +18,7 @@ var _App;
 
     $.page.add('service', {
         index: function() {
-            macro('service.login');
+            macro('service.index');
             return (true);
         },
 

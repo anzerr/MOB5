@@ -46,6 +46,9 @@ var _App;
         render: function() {
             var self = this, range = this.range(true);
             return r('div').style({overflow: 'auto'}, 'full').c(
+                r('div').c(
+                    r('a').set({href: '#/'}).c('<')
+                ),
                 //r('div').c('offset:' +  self.state.offset),
                 r('div').style({overflow: 'auto', textAlign: 'center', margin: '10px 0px'}).c(
                     r('div').style(block).c(range[0].toUTCString()),

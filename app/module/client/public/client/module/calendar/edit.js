@@ -35,7 +35,7 @@ var _App;
         },
 
         render: function() {
-            var self = this, size = 400, show = this.props.open, d = this.props.data || {};
+            var self = this, size = 350, show = this.props.open, d = this.props.data || {};
             return (r('div').style('full', 'abs', {top: '0px', pointerEvents: show? 'all' : 'none'}).c(
                 r('part.block').set({show: show}).on('click', function(e) {
                     if (self.props.onClose) {
