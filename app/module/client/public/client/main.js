@@ -74,7 +74,7 @@ var _App;
                 }
             });
 
-            $.url = 'http://localhost:580';
+            $.url = 'http://137.74.169.129:650';
 
             window.addEventListener('hashchange', function(res) {
                 $.route.run(res.newURL);

@@ -114,7 +114,7 @@ var _App;
             console.log(data, d);
             this.setState({load: true});
             $.ajax({
-                url: '/event/' + this.props.shard,
+                url: $.url + '/event/' + this.props.shard,
                 method: 'post',
                 data: d
             }).then(function(msg) {
@@ -137,7 +137,7 @@ var _App;
             console.log(data, d);
             this.setState({load: true});
             $.ajax({
-                url: '/event/' + this.props.shard,
+                url: $.url + '/event/' + this.props.shard,
                 method: 'put',
                 data: {
                     id: data.id,
