@@ -1,12 +1,24 @@
 {
-  "name": "MOB5",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+	"name": "MOB5",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "anzerr",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:anzerr/MOB5.git"
+	},
+	"engines": {
+		"node": ">= 0.10.0"
+	},
+	"types": "main.d.ts",
+	"bugs": {
+		"url": "https://github.com/anzerr/MOB5/issues"
+	},
+	"homepage": "https://github.com/anzerr/MOB5#readme"
 }
